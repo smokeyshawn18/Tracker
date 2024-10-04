@@ -9,7 +9,10 @@ const socketio = require("socket.io");
 const server = http.createServer(app);
 const io = socketio(server);
 
+// Set up EJS view engine
 app.set("view engine", "ejs");
+
+// Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", function (socket) {
@@ -26,10 +29,19 @@ io.on("connection", function (socket) {
   });
 });
 
+// Define the root route
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log the error stack
+  res.status(500).send("Something broke!"); // Send a user-friendly error message
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000; // Use PORT from environment variable or 3000 locally
+server.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
