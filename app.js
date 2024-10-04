@@ -4,7 +4,14 @@ const http = require("http");
 const path = require("path");
 const cors = require("cors");
 
-app.use(cors()); // Enable CORS for all requests
+const FRONTEND_URL = "https://tracker-mocha-kappa.vercel.app/";
+
+app.use(
+  cors({
+    origin: FRONTEND_URL, // Allow requests from the frontend URL
+  })
+);
+
 const socketio = require("socket.io");
 const server = http.createServer(app);
 const io = socketio(server);
@@ -32,6 +39,11 @@ io.on("connection", function (socket) {
 // Define the root route
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+// Example redirect route (optional)
+app.get("/redirect", (req, res) => {
+  res.redirect(FRONTEND_URL);
 });
 
 // Error handling middleware
