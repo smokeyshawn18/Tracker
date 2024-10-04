@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+      integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Font for a professional heading -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Live Location Tracker</title>
+
+    <style>
+      /* Style for the heading */
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        color: #1e90ff; /* Bright blue color */
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      /* Map and body adjustments */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      #map {
+        flex: 1; /* Ensure map takes up remaining space */
+        height: 500px;
+        margin: 20px auto;
+        width: 80%;
+        border: 2px solid #1e90ff;
+      }
+
+      /* Footer copyright section */
+      footer {
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #000000;
+        font-weight: bold;
+        padding: 10px;
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Heading for the page -->
+    <h1>Live Location Tracker</h1>
+
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <!-- Footer with copyright -->
+    <footer>&copy; 2024 All rights reserved. Copyright by smokeyshawn</footer>
+
+    <!-- Leaflet and Socket.io scripts -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
+      integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
