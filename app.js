@@ -4,7 +4,7 @@ const http = require("http");
 const path = require("path");
 const cors = require("cors");
 
-const FRONTEND_URL = "https://tracker-mocha-kappa.vercel.app/";
+const FRONTEND_URL = "https://tracker-six-delta.vercel.app/";
 
 app.use(
   cors({
@@ -21,6 +21,7 @@ app.set("view engine", "ejs");
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
+app.set("views", path.join(__dirname, "views"));
 
 io.on("connection", function (socket) {
   console.log("A new user connected:", socket.id);
