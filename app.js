@@ -8,7 +8,7 @@ const FRONTEND_URL = "https://tracker-six-delta.vercel.app/";
 
 app.use(
   cors({
-    origin: FRONTEND_URL, // Allow requests from the frontend URL
+    origin: FRONTEND_URL,
   })
 );
 
@@ -27,7 +27,8 @@ io.on("connection", function (socket) {
   console.log("A new user connected:", socket.id);
 
   socket.on("send-location", function (data) {
-    console.log(`Location received from ${socket.id}:`, data); // Debugging line
+    console.log(`Location received from ${socket.id}:`, data);
+    // Emit the location to all clients
     io.emit("receive-location", { id: socket.id, ...data });
   });
 
@@ -49,12 +50,12 @@ app.get("/redirect", (req, res) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack); // Log the error stack
-  res.status(500).send("Something broke!"); // Send a user-friendly error message
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000; // Use PORT from environment variable or 3000 locally
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
